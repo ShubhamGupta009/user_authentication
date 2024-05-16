@@ -20,7 +20,7 @@ export class RolesGuard implements CanActivate {
 
         // Ensure the user object exists and has a roles property
         const { user } = context.switchToHttp().getRequest();
-        const dbUser = await this.userService.findOne(user.username)
+        const dbUser = await this.userService.findOne(user.username);
         // const user = request.user;
         //console.log(user)
         //console.log(dbUser)
@@ -37,7 +37,6 @@ export class RolesGuard implements CanActivate {
             console.error('User Roles  is undefined');
             return false; // Or handle as appropriate for your application
         }
-
         return requiredRoles.some((role) => dbUser.roles.includes(role));
     }
 }
